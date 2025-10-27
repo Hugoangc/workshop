@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.javasb.practice.entities.Category;
 import com.javasb.practice.entities.Order;
 import com.javasb.practice.entities.OrderItem;
+import com.javasb.practice.entities.Payment;
 import com.javasb.practice.entities.Product;
 import com.javasb.practice.entities.User;
 import com.javasb.practice.enums.OrderStatus;
@@ -83,6 +84,10 @@ public class TestConfig implements CommandLineRunner {
     OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
     orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 
+
+    Payment pay1 = new Payment(null, Instant.parse("2019-06-20T23:53:07Z"), o1);
+    o1.setPayment(pay1);
+    orderRepository.save(o1);
     //throw new UnsupportedOperationException("Unimplemented method 'run'");
   }
 
