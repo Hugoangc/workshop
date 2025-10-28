@@ -25,4 +25,5 @@ Para executar:
 
 API disponível na porta 8080.
 
-#### diagrama de classe: https://imgur.com/JmYg0MQ
+### Diagrama de classe:
+<img src="https://i.imgur.com/JmYg0MQ.png" alt="diagrama de classe">
