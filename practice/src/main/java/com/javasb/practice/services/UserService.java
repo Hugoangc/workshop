@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.Mapping;
 import com.javasb.practice.entities.User;
 import com.javasb.practice.repositories.UserRepository;
+import com.javasb.practice.services.exceptions.DatabaseException;
+import com.javasb.practice.services.exceptions.ResourceNotFoundException;
+
 import jakarta.persistence.EntityNotFoundException;
 
 
@@ -26,15 +29,22 @@ public class UserService {
 
   public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
-    return obj.get();
+    return obj.orElseThrow(() -> new ResourceNotFoundException(id));
   }
+
   public User insert(User obj){
     return repository.save(obj);
   }
 
-  public void delete (Long id){
-    repository.deleteById(id);
-  }
+	public void delete(Long id) {
+		try {
+			repository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException(e.getMessage());
+		}
+	}
 
   public User update(Long id, User obj){
     User entity = repository.getReferenceById(id);
