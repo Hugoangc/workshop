@@ -24,3 +24,5 @@ Para executar:
 ```.\mvnw spring-boot:run```
 
 API disponível na porta 8080.
+
+#### diagrama de classe: https://imgur.com/JmYg0MQ
