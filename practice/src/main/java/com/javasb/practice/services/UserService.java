@@ -9,11 +9,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.Mapping;
-
 import com.javasb.practice.entities.User;
 import com.javasb.practice.repositories.UserRepository;
-
-
 import jakarta.persistence.EntityNotFoundException;
 
 
@@ -33,5 +30,21 @@ public class UserService {
   }
   public User insert(User obj){
     return repository.save(obj);
+  }
+
+  public void delete (Long id){
+    repository.deleteById(id);
+  }
+
+  public User update(Long id, User obj){
+    User entity = repository.getReferenceById(id);
+    updateData(entity, obj);
+    return repository.save(entity);
+  }
+
+  private void updateData(User entity, User obj) {
+    entity.setName(obj.getName());
+    entity.setEmail(obj.getEmail());
+    entity.setPhone(obj.getPhone());
   }
 }
