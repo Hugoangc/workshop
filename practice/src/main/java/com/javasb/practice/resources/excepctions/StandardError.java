@@ -2,7 +2,6 @@ package com.javasb.practice.resources.excepctions;
 
 import java.io.Serializable;
 import java.time.Instant;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class StandardError implements Serializable {

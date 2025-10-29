@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +17,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_product")
-public class Product  implements Serializable{
+public class Product implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,9 +28,7 @@ public class Product  implements Serializable{
   private String img;
 
   @ManyToMany
-  @JoinTable(name = "tb_product_category", 
-  joinColumns = @JoinColumn(name = "product_id"),
-  inverseJoinColumns = @JoinColumn(name = "category_id"))
+  @JoinTable(name = "tb_product_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 
   private Set<Category> categories = new HashSet<>();
 
@@ -95,13 +92,13 @@ public class Product  implements Serializable{
   }
 
   @JsonIgnore
-  public Set<Order> getOrders(){
+  public Set<Order> getOrders() {
     Set<Order> set = new HashSet<>();
-    for(OrderItem x : items) set.add(x.getOrder());
+    for (OrderItem x : items)
+      set.add(x.getOrder());
 
     return set;
   }
-  
 
   @Override
   public int hashCode() {
@@ -128,9 +125,4 @@ public class Product  implements Serializable{
     return true;
   }
 
-
-  
-
-
-  
 }

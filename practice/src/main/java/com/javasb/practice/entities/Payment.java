@@ -2,9 +2,7 @@ package com.javasb.practice.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_payment")
-public class Payment implements Serializable{
+public class Payment implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,8 +25,8 @@ public class Payment implements Serializable{
   @MapsId
   private Order order;
 
-  public Payment(){
-    
+  public Payment() {
+
   }
 
   public Payment(Long id, Instant moment, Order order) {
@@ -86,5 +84,4 @@ public class Payment implements Serializable{
       return false;
     return true;
   }
-  
 }

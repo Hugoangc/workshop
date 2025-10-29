@@ -1,10 +1,8 @@
 package com.javasb.practice.entities;
 
 import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.javasb.practice.entities.pk.OrderItemPK;
-
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -40,7 +38,6 @@ public class OrderItem implements Serializable{
   public void setOrder(Order order){
     id.setOrder(order);
   }
-
 
   public Product getProduct(){
     return id.getProduct();
@@ -94,8 +91,4 @@ public class OrderItem implements Serializable{
       return false;
     return true;
   }
-
-
-
-  
 }

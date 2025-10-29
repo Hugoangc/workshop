@@ -3,9 +3,7 @@ package com.javasb.practice.entities;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,18 +13,17 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_category")
-public class Category implements Serializable{
+public class Category implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String name;
-  
+
   @JsonIgnore
   @ManyToMany(mappedBy = "categories")
   private Set<Product> products = new HashSet<>();
 
-  
   public Set<Product> getProducts() {
     return products;
   }
@@ -34,39 +31,27 @@ public class Category implements Serializable{
   public Category() {
   }
 
-
-
   public Category(Long id, String name) {
     super();
     this.id = id;
     this.name = name;
   }
 
-
-
   public Long getId() {
     return id;
   }
-
-
 
   public void setId(Long id) {
     this.id = id;
   }
 
-
-
   public String getName() {
     return name;
   }
 
-
-
   public void setName(String name) {
     this.name = name;
   }
-
-
 
   @Override
   public int hashCode() {
@@ -75,8 +60,6 @@ public class Category implements Serializable{
     result = prime * result + ((id == null) ? 0 : id.hashCode());
     return result;
   }
-
-
 
   @Override
   public boolean equals(Object obj) {
@@ -94,7 +77,5 @@ public class Category implements Serializable{
       return false;
     return true;
   }
-
-
 
 }
